@@ -59,12 +59,18 @@ namespace Lesson_5
             BankAccountClass classAccount = new BankAccountClass(NAME, BALANCE);
 
             BankAccountStruct copyStructAccount = structAccount;
-            BankAccountClass copyClassAccount = classAccount; 
+            BankAccountClass copyClassAccount = classAccount;
 
 
-
+            Add100(structAccount);
             structAccount.ShowDetails("Original Struct Account");
+            Add100(classAccount);
             copyStructAccount.ShowDetails("Original Class Account");
+
+            structAccount.Balance = Add100(structAccount.Balance);
+            classAccount.Balance = Add100(classAccount.Balance);
+
+
             Console.WriteLine();
             classAccount.ShowDetails("Original Struct Account");
             copyClassAccount.ShowDetails("Original Class Account");
@@ -81,6 +87,19 @@ namespace Lesson_5
             Console.ReadLine();
 
             
+        }
+
+        static void Add100(BankAccountStruct structAccount)
+        {
+            structAccount.Balance += 10000000;
+        }
+        static void Add100(BankAccountClass classAccount)
+        {
+            classAccount.Balance += 10000000;
+        }
+        static float Add100(float balance)
+        {
+            return balance += 10000000;
         }
     }
 }

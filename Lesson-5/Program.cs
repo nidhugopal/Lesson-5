@@ -21,7 +21,7 @@ namespace Lesson_5
 
         public void ShowDetails(string title)
         {
-            Console.WriteLine($"Title:{title}; \n Name:{Name}; \n Balance:{Balance.ToString("C")}");
+            Console.WriteLine($"Title:{title}; \n Name:{Name};  Balance:{Balance.ToString("C")}");
         }
     }
 
@@ -44,7 +44,7 @@ namespace Lesson_5
 
         public void ShowDetails(string title)
         {
-            Console.WriteLine($"Title:{title}; \n Name:{Name}; \n Balance:{Balance}");
+            Console.WriteLine($"Title:{title}; \n Name:{Name};  Balance:{Balance.ToString("C")}");
         }
     }
     class Program
@@ -58,10 +58,26 @@ namespace Lesson_5
 
             BankAccountClass classAccount = new BankAccountClass(NAME, BALANCE);
 
-            structAccount.AddMonthlyInterest();
-            classAccount.AddMonthlyInterest();
+            BankAccountStruct copyStructAccount = structAccount;
+            BankAccountClass copyClassAccount = classAccount; 
+
+
+
             structAccount.ShowDetails("Original Struct Account");
-            classAccount.ShowDetails("Original Class Account");
+            copyStructAccount.ShowDetails("Original Class Account");
+            Console.WriteLine();
+            classAccount.ShowDetails("Original Struct Account");
+            copyClassAccount.ShowDetails("Original Class Account");
+
+            copyStructAccount.AddMonthlyInterest();
+            copyClassAccount.AddMonthlyInterest();
+            Console.WriteLine("-----------------------------");
+            structAccount.ShowDetails("Original Struct Account");
+            copyStructAccount.ShowDetails("Original Class Account");
+            Console.WriteLine();
+            classAccount.ShowDetails("Original Struct Account");
+            copyClassAccount.ShowDetails("Original Class Account");
+
             Console.ReadLine();
 
             
